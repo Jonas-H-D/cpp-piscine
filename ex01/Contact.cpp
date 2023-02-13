@@ -2,7 +2,7 @@
 // Created by Jonas Hermon-Duc on 10/02/2023.
 //
 #include <string>
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 using namespace std;
 

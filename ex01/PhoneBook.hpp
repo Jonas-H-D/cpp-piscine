@@ -6,7 +6,7 @@
 #define EX01_PHONEBOOK_CLASS_HPP
 #include <string>
 #include <list>
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 using namespace std;
 

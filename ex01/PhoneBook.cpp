@@ -4,8 +4,8 @@
 #include <string>
 #include <list>
 #include <iostream>
-#include "Contact.class.hpp"
-#include "PhoneBook.class.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 using namespace std;
 
@@ -49,7 +49,11 @@ bool PhoneBook::addContact(Contact &contact) {
 void PhoneBook::listAllContacts() {
     list<Contact>::iterator it;
     for (it = contacts.begin(); it != contacts.end(); it++) {
-        cout << ((Contact) (*it)).getFirstName() << " -- " << ((Contact) (*it)).getPhoneNumber() << endl;
+        cout << ((Contact) (*it)).getFirstName() << " | "
+                << ((Contact) (*it)).getLastName() << " | "
+                    << ((Contact) (*it)).getNickname() << " | "
+                        << ((Contact) (*it)).getDarkestSecret() << " | "
+                            << ((Contact) (*it)).getPhoneNumber() << endl;
     }
     cout << endl;
 }
