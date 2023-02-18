@@ -1,7 +1,6 @@
 //
 // Created by Jonas Hermon-Duc on 10/02/2023.
 //
-#include <string>
 #include "Contact.hpp"
 
 using namespace std;
@@ -58,31 +57,48 @@ bool checkName(string name){
     }
     return true;
 }
-bool Contact::setLastName(string name) {
-    if (checkName(name)) {
-        lastName = name;
-        return true;
+void Contact::setLastName() {
+    string info;
+
+    cout << "Last Name: ";
+    getline(cin, info);
+    if (checkName(info)) {
+        lastName = info;
     }
-    return false;
+    else {
+        cout << "Non valid Name" << endl;
+        setLastName();
+    }
 }
 
-bool Contact::setFirstName(string name) {
-    if (checkName(name)) {
-        firstName = name;
-        return true;
+void Contact::setFirstName() {
+    string info;
+
+    cout << "First Name: ";
+    getline(cin, info);
+    if (checkName(info)) {
+        firstName = info;
     }
-    return false;
+    else {
+        cout << "Non valid Name" << endl;
+        setFirstName();
+    }
 }
 
-bool Contact::setNickname(string name) {
-    if (checkName(name)) {
-        nickname = name;
-        return true;
-    }
-    return false;
-}
+void Contact::setNickname() {
+    string info;
 
-bool Contact::setPhoneNumber(string phone) {
+    cout << "Nickname: ";
+    getline(cin, info);
+    if (checkName(info)) {
+        nickname = info;
+    }
+    else {
+        cout << "Non valid Name" << endl;
+        setNickname();
+    }
+}
+bool checkNumber(string phone){
     if (phone == "") {
         return false;
     }
@@ -99,14 +115,33 @@ bool Contact::setPhoneNumber(string phone) {
     if (found) {
         return false;
     }
-    phoneNumber = phone;
     return true;
 }
 
-bool Contact::setDarkestSecret(string name) {
-    if (name == "") {
-        return false;
+void Contact::setPhoneNumber() {
+    string info;
+
+    cout << "PhoneNumber: ";
+    getline(cin, info);
+    if (checkNumber(info)) {
+        phoneNumber = info;
     }
-    darkestSecret = name;
-    return true;
+    else {
+        cout << "Non valid Number" << endl;
+        setPhoneNumber();
+    }
+}
+
+void Contact::setDarkestSecret() {
+    string info;
+
+    cout << "Darkest secret: ";
+    getline(cin, info);
+    if (info != "") {
+        darkestSecret = info;
+    }
+    else {
+        cout << "Can't be empty" << endl;
+        setDarkestSecret();
+    }
 }

@@ -4,8 +4,11 @@
 
 #ifndef EX01_PHONEBOOK_CLASS_HPP
 #define EX01_PHONEBOOK_CLASS_HPP
-#include <string>
 #include <list>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <stdlib.h>
 #include "Contact.hpp"
 
 using namespace std;
@@ -15,10 +18,17 @@ class PhoneBook {
     list<Contact> contacts;
 public:
     PhoneBook();
-
-    bool addContact(string fName, string lName, string niName, string phone, string secret);
-    bool addContact(Contact&);
+    ~PhoneBook();
+    void addContact(string fName, string lName, string niName, string phone, string secret);
+    void addContact(Contact&);
 
     void listAllContacts();
+    void generateContact(PhoneBook *myBook);
+    void searchContact(void);
+    void searchDisplay(void);
+    void startDisplay(void);
+    void deleteAllContacts();
+
+    void deleteLastContacts();
 };
 #endif //EX01_PHONEBOOK_CLASS_HPP
