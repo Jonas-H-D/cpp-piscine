@@ -1,14 +1,12 @@
 
-#ifndef EX01_PHONEBOOK_CLASS_HPP
-#define EX01_PHONEBOOK_CLASS_HPP
+#ifndef EX01_PHONEBOOK_HPP
+#define EX01_PHONEBOOK_HPP
 #include <list>
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <stdlib.h>
 #include "Contact.hpp"
-
-using namespace std;
 
 class PhoneBook {
 private:

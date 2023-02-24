@@ -1,18 +1,16 @@
 
-#ifndef EX01_CONTACT_CLASS_HPP
-#define EX01_CONTACT_CLASS_HPP
+#ifndef EX01_CONTACT_HPP
+#define EX01_CONTACT_HPP
 
 #include <string>
 #include <iostream>
 # include <iomanip>
 
-using namespace std;
-
 class Contact {
 private:
     int					index;
-    static string	    list_name[5];
-    string			    informations[5];
+    static std::string	    list_name[5];
+    std::string			    informations[5];
 
     enum Field {
         FirstName = 0,
@@ -23,7 +21,7 @@ private:
     };
 public:
     Contact();
-    virtual ~Contact();
+    ~Contact();
 
     bool	set_informations(int index);
     void	display_header();
@@ -31,4 +29,4 @@ public:
     void display();
 };
 
-#endif //EX01_CONTACT_CLASS_HPP
+#endif

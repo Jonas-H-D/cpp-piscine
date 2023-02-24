@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Megaphone {
     int y;
@@ -13,14 +12,14 @@ Megaphone::Megaphone(char **argv, int argc) {
     y = 1;
 
     if (argc < 2)
-        cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
     else {
         while (y < argc) {
             int i = 0;
             while (argv[y][i]) {
                 putchar(toupper(argv[y][i++]));
             }
-            cout << " ";
+            std::cout << " ";
             y++;
         }
     }
@@ -28,6 +27,6 @@ Megaphone::Megaphone(char **argv, int argc) {
 
 int main(int argc, char **argv){
     Megaphone Mega(argv, argc);
-    cout << endl;
+    std::cout << std::endl;
     return 0;
 }
