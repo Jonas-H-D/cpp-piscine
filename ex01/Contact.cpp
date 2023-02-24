@@ -1,147 +1,66 @@
-//
-// Created by Jonas Hermon-Duc on 10/02/2023.
-//
+
 #include "Contact.hpp"
 
 using namespace std;
 
-Contact::Contact() {
-    firstName = "Default";
-    lastName = "Default";
-    nickname = "Default";
-    phoneNumber = "0XXXX";
-    darkestSecret = "NOYB";
+std::string Contact::list_name[5] = {
+        "First Name",
+        "Last Name",
+        "Nickname",
+        "Phone Number",
+        "Darkest Secret",
+};
+
+Contact::Contact()
+{
+    for (int i = FirstName; i <= DarkestSecret; i++)
+        this->informations[i] = string();
 }
 
-Contact::Contact(string fName, string lName, string niName, string phone, string secret) {
-    firstName = fName;
-    lastName = lName;
-    nickname = niName;
-    phoneNumber = phone;
-    darkestSecret = secret;
+Contact::~Contact()
+{
 }
 
-Contact::Contact(const Contact& other) {
-    firstName = other.firstName;
-    lastName = other.lastName;
-    nickname = other.nickname;
-    phoneNumber = other.phoneNumber;
-    darkestSecret = other.darkestSecret;
-}
+bool Contact::set_informations(int index)
+{
+    string info = "";
 
-string Contact::getFirstName() {
-    return firstName;
-}
-
-string Contact::getLastName() {
-    return lastName;
-}
-
-string Contact::getNickname() {
-    return nickname;
-}
-string Contact::getPhoneNumber() {
-    return phoneNumber;
-}
-string Contact::getDarkestSecret() {
-    return darkestSecret;
-}
-
-bool checkName(string name){
-    if (name == "") {
-        return false;
-    }
-    char c = name[0];
-    if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
-        return false;
-    }
-    return true;
-}
-void Contact::setLastName() {
-    string info;
-
-    cout << "Last Name: ";
-    getline(cin, info);
-    if (checkName(info)) {
-        lastName = info;
-    }
-    else {
-        cout << "Non valid Name" << endl;
-        setLastName();
-    }
-}
-
-void Contact::setFirstName() {
-    string info;
-
-    cout << "First Name: ";
-    getline(cin, info);
-    if (checkName(info)) {
-        firstName = info;
-    }
-    else {
-        cout << "Non valid Name" << endl;
-        setFirstName();
-    }
-}
-
-void Contact::setNickname() {
-    string info;
-
-    cout << "Nickname: ";
-    getline(cin, info);
-    if (checkName(info)) {
-        nickname = info;
-    }
-    else {
-        cout << "Non valid Name" << endl;
-        setNickname();
-    }
-}
-bool checkNumber(string phone){
-    if (phone == "") {
-        return false;
-    }
-    int i;
-    int n = phone.length();
-    char c;
-    bool found = false;
-    for (i = 0; i < n && found == false; i++) {
-        c = phone.at(i);
-        if (((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
-            found = true;
+    this->index = index;
+    for (int i = FirstName; i <= DarkestSecret; i++)
+    {
+        cout << "# " << Contact::list_name[i] << ":\n+";
+        getline(cin, info);
+        while (info == ""){
+            cout << "Please fill this field" << endl;
+            getline(cin, info);
         }
+        this->informations[i] = info;
+        info = "";
     }
-    if (found) {
-        return false;
-    }
-    return true;
+    cout << "# Contact added !" << endl;
+    return (true);
 }
 
-void Contact::setPhoneNumber() {
-    string info;
-
-    cout << "PhoneNumber: ";
-    getline(cin, info);
-    if (checkNumber(info)) {
-        phoneNumber = info;
+void Contact::display_header()
+{
+    cout << "|" << setw(10) << this->index;
+    for (int i = FirstName; i <= Nickname; i++)
+    {
+        cout << "|";
+        if (this->informations[i].length() > 10)
+            cout << this->informations[i].substr(0, 9) << ".";
+        else
+            cout << setw(10) << this->informations[i];
     }
-    else {
-        cout << "Non valid Number" << endl;
-        setPhoneNumber();
-    }
+    cout << "|" << endl;
 }
 
-void Contact::setDarkestSecret() {
-    string info;
-
-    cout << "Darkest secret: ";
-    getline(cin, info);
-    if (info != "") {
-        darkestSecret = info;
-    }
-    else {
-        cout << "Can't be empty" << endl;
-        setDarkestSecret();
+void Contact::display(void)
+{
+    cout << "# Contact [" << this->index << "]" << endl;
+    for (int i = FirstName; i <= DarkestSecret; i++)
+    {
+        cout << Contact::list_name[i] << ": ";
+        cout << this->informations[i] << endl;
     }
 }

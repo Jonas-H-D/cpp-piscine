@@ -1,27 +1,26 @@
-#include <iostream>
-#include <string>
+
 #include "PhoneBook.hpp"
 
 using namespace std;
 
-PhoneBook *myBook;
-
 int main(int argc, char** argv) {
-    myBook = new PhoneBook();
+    PhoneBook myBook;
     string command;
+    bool run;
 
-    while (command != "EXIT") {
-        myBook->startDisplay();
-        cin >> command;
+    run = true;
+    while (run) {
+        myBook.start_display();
+        getline(cin, command);
         if (command == "ADD") {
-            myBook->generateContact(myBook);
+            myBook.add_contact();
         }
         if (command == "SEARCH") {
-            myBook->searchContact();
+            myBook.search_contact();
         }
         if (command == "EXIT") {
             cout << "Exiting program" << endl;
-            exit(1);
+            run = false;
         }
     }
     return 0;

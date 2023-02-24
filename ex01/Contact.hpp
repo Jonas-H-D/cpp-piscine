@@ -1,35 +1,34 @@
-//
-// Created by Jonas Hermon-Duc on 10/02/2023.
-//
+
 #ifndef EX01_CONTACT_CLASS_HPP
 #define EX01_CONTACT_CLASS_HPP
 
 #include <string>
 #include <iostream>
+# include <iomanip>
 
 using namespace std;
 
 class Contact {
-public:
-    string firstName;
-    string lastName;
-    string nickname;
-    string phoneNumber;
-    string darkestSecret;
-    Contact();
-    Contact(string, string, string, string, string);
-    Contact(const Contact&);
+private:
+    int					index;
+    static string	    list_name[5];
+    string			    informations[5];
 
-    string getFirstName();
-    string getLastName();
-    string getNickname();
-    string getDarkestSecret();
-    string getPhoneNumber();
-    void setFirstName();
-    void setLastName();
-    void setNickname();
-    void setDarkestSecret();
-    void setPhoneNumber();
+    enum Field {
+        FirstName = 0,
+        LastName,
+        Nickname,
+        PhoneNumber,
+        DarkestSecret
+    };
+public:
+    Contact();
+    virtual ~Contact();
+
+    bool	set_informations(int index);
+    void	display_header();
+
+    void display();
 };
 
 #endif //EX01_CONTACT_CLASS_HPP

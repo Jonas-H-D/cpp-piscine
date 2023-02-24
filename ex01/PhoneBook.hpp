@@ -1,6 +1,3 @@
-//
-// Created by Jonas Hermon-Duc on 10/02/2023.
-//
 
 #ifndef EX01_PHONEBOOK_CLASS_HPP
 #define EX01_PHONEBOOK_CLASS_HPP
@@ -14,21 +11,16 @@
 using namespace std;
 
 class PhoneBook {
-    int nr;
-    list<Contact> contacts;
+private:
+    Contact	contacts[8];
+    int		nr;
 public:
     PhoneBook();
     ~PhoneBook();
-    void addContact(string fName, string lName, string niName, string phone, string secret);
-    void addContact(Contact&);
 
-    void listAllContacts();
-    void generateContact(PhoneBook *myBook);
-    void searchContact(void);
-    void searchDisplay(void);
-    void startDisplay(void);
-    void deleteAllContacts();
-
-    void deleteLastContacts();
+    void    start_display(void);
+    void    search_display(void);
+    void	add_contact(void);
+    void	search_contact(void);
 };
-#endif //EX01_PHONEBOOK_CLASS_HPP
+#endif

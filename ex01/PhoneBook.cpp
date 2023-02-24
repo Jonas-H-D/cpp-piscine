@@ -1,120 +1,59 @@
-//
-// Created by Jonas Hermon-Duc on 10/02/2023.
-//
+
 #include "PhoneBook.hpp"
 #include <limits>
 
 using namespace std;
 
 PhoneBook::PhoneBook() {
-    nr = 0;
+    this->nr = 0;
 }
 
 PhoneBook::~PhoneBook() {
 
 }
 
-void PhoneBook::startDisplay(void) {
-    cout << "################PHONEBOOK##################" << endl;
-    cout << "Enter your command (ADD, SEARCH, EXIT" << endl;
+void PhoneBook::start_display(void) {
+    cout << "################PHONEBOOK####################" << endl;
+    cout << "Enter your command (ADD, SEARCH, EXIT)" << endl;
     cout << "command >>>>> ";
 }
 
-void PhoneBook::searchDisplay(void) {
-    cout << "###########################################" << endl;
-    cout  << "INDEX     |FIRSTNAME |LASTNAME  |NICKNAME  "<< endl;
-    this->listAllContacts();
-    cout << "|-----------------------------------------|" << endl;
+void PhoneBook::search_display(void) {
+    cout << "#############################################" << endl;
+    cout << "|     Index|First Name| Last Name|  Nickname|"<< endl;
+    for (int i = 0; i < this->nr && i < 8 + 1; i++)
+        this->contacts[i].display_header();
+    cout << "|-------------------------------------------|" << endl;
 }
 
-void    PhoneBook::addContact(string fName, string lName, string niName, string phone, string secret) {
-    if (nr == 7) {
-        this->deleteLastContacts();
-        nr--;
+void PhoneBook::add_contact(void)
+{
+    if (this->nr == 8) {
+        cout << "# The directory is full, Making space !" << endl;
+        this->contacts[this->nr - 1].set_informations(this->nr -1);
     }
-    contacts.push_back(Contact(fName, lName, niName, phone, secret));
-    nr++;
+    else if (this->contacts[this->nr].set_informations(this->nr))
+        this->nr++;
 }
 
+void PhoneBook::search_contact(void)
+{
+    int	index;
 
-void PhoneBook::addContact(Contact &contact) {
-    this->addContact(contact.getFirstName(), contact.getLastName(), contact.getNickname(), contact.getPhoneNumber(),
-                      contact.getDarkestSecret());
-}
-
-void printInfo(string info){
-    if (info.length() > 10)
-        cout << info.substr(0, 9) << "." << "|";
+    if (this->nr == 0)
+        cout << "# Add a contact before searching !" << endl;
     else
-        cout << info << setw((10 - info.length())) << "|";
-}
-
-void PhoneBook::listAllContacts() {
-    list<Contact>::iterator it;
-    int count = 0;
-    for (it = contacts.begin(); it != contacts.end(); it++) {
-        cout << count << setw(10) << "|";
-        printInfo(((Contact) (*it)).getFirstName());
-        printInfo(((Contact) (*it)).getLastName());
-        printInfo(((Contact) (*it)).getNickname());
-        count++;
-        cout << endl;
-    }
-    cout << endl;
-}
-
-void PhoneBook::searchContact() {
-    list<Contact>::iterator it, itLast;
-    int index;
-    int iterate = 0;
-    this->searchDisplay();
-    cout << "Enter index of Contact to display: ";
-    cin >> index;
-    while(1) {
-        if ((cin.fail())) {
+    {
+        this->search_display();
+        cout << "# Enter Index to display\n~";
+        while (!(cin >> index) || (index < 0 || index > this->nr -1))
+        {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "INDEX is between 0 and 7" << endl;
-            cout << "Retry >>> Enter index of Contact to display: ";
-            cin >> index;
+            cout << "# Invalid Index\n~";
         }
-        if (!cin.fail())
-            break;
-    }
-    for (it = contacts.begin(); it != contacts.end(); it++) {
-        if (iterate == index) {
-            cout << "FIRST NAME:  " << ((Contact) (*it)).getFirstName() << endl;
-            cout << "LAST NAME:   "      << ((Contact) (*it)).getLastName() << endl;
-            cout << "NICKNAME:    "      << ((Contact) (*it)).getNickname() << endl;
-            cout << "PHONE:       "      << ((Contact) (*it)).getPhoneNumber() << endl;
-            cout << "DARKEST SECRET: "  << ((Contact) (*it)).getDarkestSecret() << endl;
-            iterate = 0;
-        }
-        iterate++;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        this->contacts[index].display();
     }
 }
 
-void PhoneBook::deleteLastContacts() {
-    list<Contact>::iterator it;
-    int i = 0;
-    for (it = contacts.begin(); it != contacts.end(); it++) {
-        i++;
-        if (i == 7) {
-            ((Contact) (*it)).firstName.clear();
-            ((Contact) (*it)).lastName.clear();
-            ((Contact) (*it)).nickname.clear();
-            ((Contact) (*it)).phoneNumber.clear();
-            ((Contact) (*it)).darkestSecret.clear();
-        }
-    }
-}
-
-void PhoneBook::generateContact(PhoneBook *myBook) {
-    Contact *myContact = new Contact();
-    myContact->setFirstName();
-    myContact->setLastName();
-    myContact->setNickname();
-    myContact->setPhoneNumber();
-    myContact->setDarkestSecret();
-    myBook->addContact(*myContact);
-}
