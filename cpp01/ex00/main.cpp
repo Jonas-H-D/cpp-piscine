@@ -1,14 +1,9 @@
 #include "Zombie.hpp"
 
-Zombie *newZombie(std::string name);
-
-void	randomChump(std::string name);
-
-int main(int argc, char** argv) {
-
-    Zombie *zombie = newZombie("Jonas");
-    zombie->announce();
+int main() {
+    Zombie *jonas = newZombie("Jonas");
+    jonas->announce();
     randomChump("Riri");
-    delete zombie;
+    delete jonas;
     return 0;
 }
