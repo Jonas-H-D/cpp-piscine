@@ -1,15 +1,15 @@
-NAME = harl
+NAME = fixed
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 OBJDIR = .objfiles
 
-FILES = Harl main
+FILES = Fixed main
 
 SRC = $(FILES:=.cpp)
 OBJ = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER = Harl.hpp
+HEADER = Fixed.hpp
 
 #Colors:
 GREEN		=	\e[92;5;118m
