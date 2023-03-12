@@ -27,6 +27,6 @@ public:
     int		toInt( void ) const;
 };
 
-std::ostream	&operator<<(std::ostream &out, const Fixed &tmp);
+std::ostream	&operator<<(std::ostream &out, Fixed const &tmp);
 
 #endif
