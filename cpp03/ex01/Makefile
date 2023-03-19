@@ -5,11 +5,11 @@ RM = rm -rf
 
 OBJDIR = .objfiles
 
-FILES = ClapTrap main
+FILES = ClapTrap ScavTrap main
 
 SRC = $(FILES:=.cpp)
 OBJ = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER = ClapTrap.hpp
+HEADER = ClapTrap.hpp ScavTrap.hpp
 
 #Colors:
 GREEN		=	\e[92;5;118m

@@ -6,12 +6,12 @@
 
 ClapTrap::ClapTrap(): _hitPoints(10), _energyPoints(10), _attackDamage(0) {
     this->setName("Default Trap");
-    std::cout << "ClapTrap Default created :/" << std::endl;
+    std::cout << "ClapTrap constructor Default created :?" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
     this->setName(name);
-    std::cout << "ClapTrap " << name << " created :)"<< std::endl;
+    std::cout << "ClapTrap constructor" << name << " :)"<< std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &other){
@@ -36,7 +36,6 @@ void ClapTrap::attack(const std::string& target){
     this->target = target;
     if (this->_hitPoints > 0 && this->_energyPoints > 0 ){
         std::cout << "ClapTrap " << this->getName() << " attacks " << this->target << ", causing "<< this->_hitPoints << "  points of damage!"<< std::endl;
-        this->takeDamage(this->_attackDamage);
         this->_energyPoints -= 1;
     }
     else
