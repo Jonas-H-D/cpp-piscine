@@ -7,13 +7,13 @@
 #include "ClapTrap.hpp"
 
 
-class FragTrap : virtual public ClapTrap
+class FragTrap : public ClapTrap
 {
 public:
     FragTrap();
     FragTrap(std::string name);
     FragTrap(const FragTrap &other);
-    virtual ~FragTrap();
+    ~FragTrap();
 
     FragTrap & operator=(const FragTrap & rhs);
 

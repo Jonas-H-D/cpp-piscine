@@ -3,16 +3,16 @@
 #include "FragTrap.hpp"
 
 int main( void ) {
-    std::cout << "\033[1;32m==========       CONSTRUCTOR      ==========\e[0m" << std::endl << std::endl;
+    std::cout << " ==========       CONSTRUCTOR      ========== "<< std::endl << std::endl;
 
-    ScavTrap    scav("Super Vietdu91");
-    FragTrap	frag("Super Thaidu93");
+    ScavTrap    scav("riri");
+    FragTrap	frag("Fifi");
 
     std::cout << std::endl;
 
-    std::cout << "\033[1;34m==========       ACTION !!!       ==========\e[0m" << std::endl << std::endl;
+    std::cout << "==========       ACTION !!!       ==========" << std::endl << std::endl;
 
-    scav.attack("Richard Nixon");
+    scav.attack("Mathew Fraser");
     scav.takeDamage(99);
     scav.beRepaired(150);
     std::cout << std::endl;
@@ -22,9 +22,9 @@ int main( void ) {
     scav.beRepaired(150);
     std::cout << std::endl;
 
-    std::cout << "\033[1;34m= = = = = = = = = = = = = = = = = = = = = =\e[0m" << std::endl << std::endl;
+    std::cout << " = = = = = = = = = = = = = = = = = = = = =" << std::endl << std::endl;
 
-    frag.attack("Donald Trump");
+    frag.attack("Rich Froning");
     frag.takeDamage(99);
     frag.beRepaired(150);
     std::cout << std::endl;
@@ -34,7 +34,7 @@ int main( void ) {
     frag.beRepaired(150);
     std::cout << std::endl;
 
-    std::cout << "\033[1;31m==========       DESTRUCTOR       ==========\e[0m" << std::endl << std::endl;
+    std::cout << "==========       DESTRUCTOR       ==========" << std::endl << std::endl;
 
     return 0;
 }

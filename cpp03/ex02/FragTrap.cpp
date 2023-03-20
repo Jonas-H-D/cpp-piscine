@@ -5,7 +5,7 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(){
-    std::cout << "Default Frag constructor called" << std::endl;
+    std::cout << "Default FragTrap super constructor called" << std::endl;
     this->_name = "random";
     this->_hitPoints = 100;
     this->_energyPoints = 100;
@@ -13,7 +13,7 @@ FragTrap::FragTrap(){
 }
 
 FragTrap::FragTrap(std::string str){
-    std::cout << "Frag constructor // " << str << " // called" << std::endl;
+    std::cout << "FragTrap awesome constructor for " << str << " // called" << std::endl;
     this->_name = str;
     this->_hitPoints = 100;
     this->_energyPoints = 100;
@@ -35,7 +35,7 @@ FragTrap & FragTrap::operator=(const FragTrap & rhs){
 }
 
 FragTrap::~FragTrap() {
-    std::cout << "FragTrap Destructor :/ of: " <<  this->getName() << std::endl;
+    std::cout << "I am destroying " <<  this->getName()<< " a FragTrap product ><" << std::endl;
 }
 
 void	FragTrap::attack(const std::string &target){
