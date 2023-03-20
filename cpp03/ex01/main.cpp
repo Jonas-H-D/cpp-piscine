@@ -3,13 +3,14 @@
 
 int main( void ) {
 
-    ScavTrap    vivi("Vivi");
-    ScavTrap    roro("Roro");
+    ScavTrap    amanda("Amanda");
+    ScavTrap    pedro("Pedro");
 
-    vivi.beRepaired(2);
-    vivi.attack("Roro");
-    roro.takeDamage(10);
-    vivi.guardGate();
+    amanda.beRepaired(10);
+    amanda.attack("SkyFall");
+    pedro.takeDamage(10);
+    amanda.guardGate();
+    pedro.takeDamage(100);
 
 
     return 0;
