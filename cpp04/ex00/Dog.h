@@ -2,15 +2,20 @@
 // Created by Jonas Hermon-duc on 3/20/23.
 //
 
-#ifndef CPP_PISCINE_DOG_H
-#define CPP_PISCINE_DOG_H
+#ifndef DOG_H
+#define DOG_H
 
+#include "Animal.h"
 
+class Dog : public Animal {
+public:
+    Dog();
+    Dog(Dog const &other);
+    Dog(Animal const &other);
+    Dog& operator=(Dog const &rhs);
+    ~Dog();
 
-class Dog {
-
+    virtual void    makeSound() const;
 };
 
-
-
-#endif //CPP_PISCINE_DOG_H
+#endif

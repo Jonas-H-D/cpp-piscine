@@ -1,15 +1,15 @@
-NAME = clap
+NAME = animal
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 OBJDIR = .objfiles
 
-FILES = ClapTrap main
+FILES = Animal Dog Cat WrongAnimal WrongCat main
 
 SRC = $(FILES:=.cpp)
 OBJ = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER = ClapTrap.hpp
+HEADER = Animal.h Dog.h Cat.h WrongAnimal.h WrongCat.h
 
 #Colors:
 GREEN		=	\e[92;5;118m
