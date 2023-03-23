@@ -56,5 +56,10 @@ int main()
         delete animal[i];
     }
 
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    delete j;
+    delete i;
+
     return 0;
 }
