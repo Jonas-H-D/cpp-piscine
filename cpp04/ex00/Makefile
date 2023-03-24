@@ -34,6 +34,9 @@ $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
 	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
 
+leaks: all
+	leaks -atExit -- ./${NAME}
+
 clean:
 	@$(RM) $(OBJDIR) $(OBJ)
 	@printf "$(YELLOW)		- Object files removed.$(RESET)\n"

@@ -17,6 +17,7 @@ WrongAnimal& WrongAnimal::operator=(WrongAnimal const &rhs){
     return *this;
 }
 WrongAnimal::~WrongAnimal(){
+    std::cout << "Wrong Animal Destructor " << std::endl;
 }
 
 std::string    WrongAnimal::getType() const {
@@ -24,5 +25,5 @@ std::string    WrongAnimal::getType() const {
 }
 
 void    WrongAnimal::makeSound() const{
-    std::cout << "WrongAnimal Song " << std::endl;
+    std::cout << "Wrong Animal Song " << std::endl;
 }

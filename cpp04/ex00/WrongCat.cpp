@@ -18,9 +18,9 @@ WrongCat& WrongCat::operator=(WrongCat const &rhs){
     return *this;
 }
 WrongCat::~WrongCat(){
-
+    std::cout << "Wrong Cat Destructor " << std::endl;
 }
 
 void    WrongCat::makeSound() const {
-    std::cout << "\033[1;32mMiaouMiaou \e[0m" << std::endl;
+    std::cout << "\033[1;32m MeuMeu \e[0m" << std::endl;
 }
