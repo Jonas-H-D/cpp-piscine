@@ -18,7 +18,7 @@ public:
     Dog& operator=(Dog const &rhs);
     ~Dog();
 
-    virtual void    makeSound() const;
+    void    makeSound() const;
     std::string   getIdea(int i) const;
     void    setIdea(std::string text, int i) const;
 };
