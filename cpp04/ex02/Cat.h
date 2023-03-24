@@ -8,13 +8,12 @@
 #include "Animal.h"
 #include "Brain.h"
 
-class Cat : public Animal {
+class Cat : public AAnimal {
 private:
     Brain *_brain;
 public:
     Cat();
     Cat(Cat const &other);
-    Cat(Animal const &other);
     Cat& operator=(Cat const &rhs);
     ~Cat();
 

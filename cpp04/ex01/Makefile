@@ -5,11 +5,11 @@ RM = rm -rf
 
 OBJDIR = .objfiles
 
-FILES = Animal Dog Cat WrongAnimal WrongCat Brain main
+FILES = Animal Dog Cat Brain main
 
 SRC = $(FILES:=.cpp)
 OBJ = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER = Animal.h Dog.h Cat.h WrongAnimal.h WrongCat.h Brain.h
+HEADER = Animal.h Dog.h Cat.h Brain.h
 
 #Colors:
 GREEN		=	\e[92;5;118m

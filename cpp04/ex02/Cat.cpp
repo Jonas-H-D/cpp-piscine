@@ -14,16 +14,11 @@ Cat::Cat(Cat const &other){
     this->_brain = new Brain(*other._brain);
 }
 
-Cat::Cat(Animal const &other) : Animal(other){
-    this->_type = other.getType();
-    this->_brain = new Brain();
-    std::cout << "Cat Copy Constructor" << std::endl;
-}
-
 Cat& Cat::operator=(Cat const &rhs){
-    this->_type = rhs.getType();
+    this->_type = rhs._type;
     return *this;
 }
+
 Cat::~Cat(){
     std::cout << "Cat Destructor" << std::endl;
     delete this->_brain;

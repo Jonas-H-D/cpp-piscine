@@ -1,8 +1,6 @@
 #include "Animal.h"
 #include "Dog.h"
 #include "Cat.h"
-#include "WrongAnimal.h"
-#include "WrongCat.h"
 
 int main()
 {
@@ -14,7 +12,6 @@ int main()
         }
         else
             animal[i] = new Cat();
-        std::cout << "Animal: " << i << " = "<< animal[i]->getType() << " " << std::endl;
         animal[i]->makeSound();
     }
 
@@ -29,8 +26,8 @@ int main()
     std::cout << "\n-------Testing deep copy. creating a dog with brain and a copy to the dog-------\n" << std::endl;
     Dog	*chien = new Dog();
     Cat	*chat = new Cat();
-    chien->setIdea("Lets go for a ride", 0);
-    chien->setIdea("You wanna ice cream?", 99);
+    chien->setIdea("I like to snif stuff", 0);
+    chien->setIdea("take over the world for more food", 99);
     chat->setIdea("I like to Miaaaaaaooooooo", 4);
     chat->setIdea("Humans are slaves ....", 22);
     std::cout << "chien idea 0 : " << chien->getIdea(0) << std::endl;

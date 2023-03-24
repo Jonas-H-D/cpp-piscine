@@ -4,7 +4,7 @@
 
 int main()
 {
-    const Animal* animal[10];
+    const AAnimal* animal[10];
 
     for (int i = 0; i < 10; i++) {
         if (i % 2){
@@ -12,7 +12,6 @@ int main()
         }
         else
             animal[i] = new Cat();
-        std::cout << "Animal: " << i << " = "<< animal[i]->getType() << " " << std::endl;
         animal[i]->makeSound();
     }
 
@@ -54,8 +53,8 @@ int main()
         delete animal[i];
     }
 
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    const AAnimal* j = new Dog();
+    const AAnimal* i = new Cat();
     delete j;
     delete i;
 
