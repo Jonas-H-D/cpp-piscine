@@ -5,7 +5,7 @@
 int main()
 {
     const AAnimal* animal[10];
-    //const AAnimal test;
+//    const AAnimal test;
 
     for (int i = 0; i < 10; i++) {
         if (i % 2){
