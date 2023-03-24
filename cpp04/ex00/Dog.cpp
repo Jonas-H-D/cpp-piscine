@@ -5,14 +5,15 @@
 #include "Dog.h"
 
 Dog::Dog(){
+    std::cout << "Dog Constructor" << std::endl;
     this->_type = "Dog";
 }
 Dog::Dog(const Dog &other) : Animal(other.getType()) {
-    std::cout << "Dog constructor called" << std::endl;
+    std::cout << "Dog copy constructor " << std::endl;
 }
 
 Dog::Dog(const Animal &other) : Animal(other) {
-    std::cout << "Dog constructor called" << std::endl;
+    std::cout << "Dog copy constructor " << std::endl;
 }
 
 Dog& Dog::operator=(Dog const &rhs){
@@ -22,6 +23,7 @@ Dog& Dog::operator=(Dog const &rhs){
     return (*this);
 }
 Dog::~Dog(){
+    std::cout << "Dog Destructor" << std::endl;
 }
 
 void    Dog::makeSound() const {

@@ -5,11 +5,14 @@
 #include "Cat.h"
 
 Cat::Cat(){
+    std::cout << "Cat Constructor" << std::endl;
     this->_type = "Cat";
 }
 Cat::Cat(Cat const &other) : Animal(other.getType()){
+    std::cout << "Cat Copy Constructor" << std::endl;
 }
 Cat::Cat(Animal const &other){
+    std::cout << "Cat Copy Constructor" << std::endl;
     *this = other;
 }
 Cat& Cat::operator=(Cat const &rhs){
@@ -17,7 +20,7 @@ Cat& Cat::operator=(Cat const &rhs){
     return *this;
 }
 Cat::~Cat(){
-
+    std::cout << "Cat Destructor" << std::endl;
 }
 
 void    Cat::makeSound() const {

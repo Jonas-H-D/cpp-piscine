@@ -4,23 +4,23 @@
 #include "Animal.h"
 
 Animal::Animal(){
-    std::cout << "Animal Constructor" << std::endl;
-    this->_type = "Animal";
+    std::cout << "Default Animal Constructor" << std::endl;
+    this->_type = "Kangaroo";
 }
 
 Animal::Animal(std::string type) : _type(type) {
-    std::cout << this->_type << " Animal constructor called" << std::endl;
+    std::cout <<this->_type << " Animal Constructor" << std::endl;
 }
 
 Animal::Animal(Animal const &other){
-    std::cout << "Animal copy Constructor" << std::endl;
+    std::cout << "Animal Copy Constructor" << std::endl;
     *this = other;
 }
 
 Animal& Animal::operator=(Animal const &rhs){
     if (this == &rhs)
         return (*this);
-    _type = rhs.getType();
+    this->_type = rhs.getType();
     return (*this);
 }
 Animal::~Animal(){
@@ -32,5 +32,5 @@ std::string    Animal::getType() const {
 }
 
 void    Animal::makeSound() const{
-    std::cout << "\033[31m SILENCE \033[0m" << std::endl;
+    std::cout << " SILENCE " << std::endl;
 }
