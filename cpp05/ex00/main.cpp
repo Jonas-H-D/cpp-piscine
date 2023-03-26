@@ -11,6 +11,7 @@ int main(){
     std::cout << lili->getName() << " : "<<bob.getGrade() << std::endl;
 
     std::cout << *lili << std::endl;
+    std::cout << bob << std::endl;
     lili->incrementGrade(100);
     delete lili;
     bob.incrementGrade(100);
