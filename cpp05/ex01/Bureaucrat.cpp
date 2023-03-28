@@ -34,12 +34,12 @@ int Bureaucrat::setGrade(int grade){
             throw Bureaucrat::GradeTooHighException();
         if (grade > 150)
             throw Bureaucrat::GradeTooLowException();
-        _grade = grade;
     }
     catch(const std:: exception& e){
         std::cerr << e.what() << std::endl;
         return 0;
     }
+    _grade = grade;
     return 1;
 }
 

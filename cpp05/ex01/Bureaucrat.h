@@ -24,17 +24,18 @@ public:
     int     setGrade(int grade);
     void    incrementGrade(int i);
     void    decrementGrade(int i);
+    void    signForm();
 
     class GradeTooHighException : public std::exception {
     public:
         virtual const char *what() const throw(){
-            return ("Grade is too HIGH, it has to be between 1 and 150");
+            return ("\033[1;31mGrade is too HIGH, it has to be Max 1 \033[0m \U0001F621");
         }
     };
     class GradeTooLowException : public std::exception {
     public:
         virtual const char *what() const throw(){
-            return ("Grade is too LOW, it has to be between 1 and 150");
+            return ("\033[1;31mGrade is too LOW, Min is 150\033[0m \U0001F621");
         }
     };
 };

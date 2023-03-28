@@ -5,11 +5,11 @@ RM = rm -rf
 
 OBJDIR = .objfiles
 
-FILES = Bureaucrat main
+FILES = Bureaucrat Form main
 
 SRC = $(FILES:=.cpp)
 OBJ = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER = Bureaucrat.h
+HEADER = Bureaucrat.h Form.hpp
 
 #Colors:
 GREEN		=	\e[92;5;118m
