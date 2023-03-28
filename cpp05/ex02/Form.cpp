@@ -39,23 +39,24 @@ int     Form::getExecGrade() const{
     return _exec_grade;
 }
 
-void Form::beSigned(Bureaucrat const &bureaucrat) {
+bool Form::beSigned(Bureaucrat const &bureaucrat) {
     try {
-        if (this->_signed == true) {
-            std::cout << "\033[1;31m"<< getName();
+        if (this->_signed == true)
             throw Form::FormAlreadySigned();
-        } else if (bureaucrat.getGrade() >= this->getSignGrade()) {
-            std::cout << bureaucrat.getName() << " couldn't sign " << _name << " form, because ";
+        if (bureaucrat.getGrade() >= this->getSignGrade()) {
+            std::cout << bureaucrat.getName() << " couldn't sign " << _name << " form, SHAME \U0001F4C3"
+                      << std::endl;
             throw Form::GradeTooLowException();
         }
     }
     catch(const std::exception &e){
         std::cerr << e.what() << std::endl;
-        return ;
+        return false;
     }
     _signed = true;
     std::cout << "\033[1;32m" << bureaucrat.getName() << " signed " << _name << " BRAVO \U0001F603\033[0m"
                   << std::endl;
+    return true;
 }
 
 Form &Form::operator=(Form const &rhs){
@@ -67,9 +68,9 @@ Form &Form::operator=(Form const &rhs){
 
 std::ostream    &operator<<(std::ostream &out, const Form &tmp){
     if (tmp.getSigned() == true)
-        out << "\033[1;32m" <<tmp.getName() << " form status: signed\033[0m";
+        out << "\033[1;32m" <<tmp.getName() << " Form is signed\033[0m";
     else
-        out << tmp.getName() << " form status: not signed; it needs a Bureaucrat at level " << tmp.getSignGrade() << " to be signed";
+        out << tmp.getName() << " Form needs a Bureaucrat at level " << tmp.getSignGrade() << " to be signed";
     return out;
 }
 

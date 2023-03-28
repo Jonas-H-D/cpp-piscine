@@ -26,7 +26,7 @@ public:
     bool    getSigned() const;
     int     getSignGrade() const;
     int     getExecGrade() const;
-    void beSigned(Bureaucrat const &bureaucrat);
+    bool beSigned(Bureaucrat const &bureaucrat);
 
     class GradeTooHighException : public std::exception {
     public:
@@ -43,7 +43,7 @@ public:
     class FormAlreadySigned : public std::exception {
     public:
         virtual const char *what() const throw(){
-            return ("\033[1;31m Form is Already Signed\033[0m \U0001F603");
+            return ("\033[1;31m * Form is Already Signed\033[0m \U0001F603");
         }
     };
 };

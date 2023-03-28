@@ -23,7 +23,7 @@ int main(){
     Form last("last", 3, 1);
 
     last.beSigned(momo);
-    std::cout << a3 << std::endl;
+    std::cout << a1 << std::endl;
 
     delete lili;
     return 0;
