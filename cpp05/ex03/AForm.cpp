@@ -49,7 +49,7 @@ void	AForm::checkBeforeExecute(Bureaucrat const & executor) const {
 void    AForm::beSigned(Bureaucrat *executor) {
     try
     {
-        if (executor->getGrade() <= this->getSignGrade()){
+        if (executor != nullptr && executor->getGrade() <= this->getSignGrade()){
             _signed = true;
             std::cout << executor->getName() << " signed " << this->getName() << std::endl;
         }
@@ -58,7 +58,7 @@ void    AForm::beSigned(Bureaucrat *executor) {
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << std::endl;
     }
 }
 
