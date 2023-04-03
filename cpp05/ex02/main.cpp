@@ -1,30 +1,33 @@
 #include "Bureaucrat.h"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(){
-    Bureaucrat  bob("Bob", 120);
-    Bureaucrat  momo("Momo", 3);
-    Bureaucrat  def;
-    Bureaucrat  *lili = new Bureaucrat("Lili", 4);
-
-    std::cout << lili->getName() << " : "<<lili->getGrade() << std::endl;
-
-    Form a3("a3", 140, 140);
-    Form a1;
-
-    lili->incrementGrade(100);
-    a3.beSigned(*lili);
-    a1.beSigned(bob);
-    std::cout << momo << std::endl;
-    momo.decrementGrade(120);
-    std::cout << momo << std::endl;
-    a3.beSigned(momo);
-
-    Form last("last", 3, 1);
-
-    last.beSigned(momo);
-    std::cout << a1 << std::endl;
-
-    delete lili;
+    try {
+        Bureaucrat	moses("moses", 3);
+        Bureaucrat	david("david", 45);
+        PresidentialPardonForm	presidential("tree");
+        RobotomyRequestForm		robotomy("garden");
+        ShrubberyCreationForm	shrub("sattelite");
+        std::cout << moses.getGrade() << std::endl;
+        moses.decreaseGrade();
+        std::cout << moses << std::endl;
+        moses.increaseGrade();
+        std::cout << moses << std::endl;
+        moses.increaseGrade();
+        robotomy.beSigned(&moses);
+        david.signForm(robotomy);
+        shrub.beSigned(&moses);
+        shrub.execute(moses);
+        moses.signForm(presidential);
+        presidential.execute(moses);
+        robotomy.execute(david);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+        return 0;
+    }
     return 0;
 }
