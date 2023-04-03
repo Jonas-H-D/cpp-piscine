@@ -28,6 +28,7 @@ public:
     void	    checkBeforeExecute(Bureaucrat const & executor) const;
     virtual void execute(Bureaucrat const &executor) const = 0;
 
+
     class GradeTooHighException : public std::exception {
     public:
         virtual const char *what() const throw(){

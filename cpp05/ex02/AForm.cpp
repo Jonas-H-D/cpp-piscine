@@ -3,8 +3,6 @@
 //
 
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.h"
 
 AForm::AForm() : _name("MyAForm"),_signed(false), _sign_grade(150), _exec_grade(120) {
 

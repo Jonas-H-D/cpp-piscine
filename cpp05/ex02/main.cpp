@@ -11,11 +11,11 @@ int main(){
         RobotomyRequestForm		robotomy("garden");
         ShrubberyCreationForm	shrub("sattelite");
         std::cout << moses.getGrade() << std::endl;
-        moses.decreaseGrade();
+        moses.incrementGrade(10);
         std::cout << moses << std::endl;
-        moses.increaseGrade();
+        moses.incrementGrade(10);
         std::cout << moses << std::endl;
-        moses.increaseGrade();
+        moses.incrementGrade(10);
         robotomy.beSigned(&moses);
         david.signForm(robotomy);
         shrub.beSigned(&moses);
