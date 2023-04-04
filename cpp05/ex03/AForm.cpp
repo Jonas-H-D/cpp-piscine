@@ -45,6 +45,7 @@ void	AForm::checkBeforeExecute(Bureaucrat const & executor) const {
             throw AForm::UnsignedFormException();
         }
         else if (executor.getGrade() > this->getExecGrade())
+
             throw AForm::GradeTooLowException();
 }
 

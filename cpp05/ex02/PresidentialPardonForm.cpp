@@ -5,11 +5,11 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("RobotRequest", 72, 45) {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("RobotRequest", 25, 5) {
     _target = "default__robot_target";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("RobotRequest", 72, 45) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("RobotRequest", 25, 5) {
     _target = target;
 }
 
@@ -28,6 +28,6 @@ void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr<< this->getName()<< ": " << e.what() << std::endl;
     }
 }

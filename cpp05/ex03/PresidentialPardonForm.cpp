@@ -5,11 +5,11 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("RobotRequest", 72, 45) {
-    _target = "default__robot_target";
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialRequest", 72, 45) {
+    _target = "default__presidential_target";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("RobotRequest", 72, 45) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialRequest", 72, 45) {
     _target = target;
 }
 

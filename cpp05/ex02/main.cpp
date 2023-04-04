@@ -11,9 +11,12 @@ int main(){
     Bureaucrat	malcolm("Malcolm", 150);
     Bureaucrat	ghost("", 120);
     PresidentialPardonForm	presidential("Trump");
+    PresidentialPardonForm	ministre(presidential);
     RobotomyRequestForm		robotomy("Jocker");
     ShrubberyCreationForm	shrub("SherryBlossom");
     ShrubberyCreationForm	shrubNull("");
+    std::cout << ministre << std::endl;
+    std::cout << shrub << std::endl;
     std::cout << "******** Testing Bureau and Form Functions **************" << std::endl;
     std::cout << "Riri grade: "<<riri.getGrade() << std::endl;
     riri.incrementGrade();
@@ -22,6 +25,7 @@ int main(){
     std::cout << riri << std::endl;
     riri.incrementGrade();
     robotomy.beSigned(&riri);
+    ministre.execute(ghost);
     malcolm.signForm(robotomy);
     shrub.beSigned(&riri);
     shrub.beSigned(&malcolm);

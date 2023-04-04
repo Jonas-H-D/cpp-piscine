@@ -36,6 +36,6 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr<< this->getName()<< ": " << e.what() << std::endl;;
     }
 }

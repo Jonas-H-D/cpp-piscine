@@ -41,9 +41,26 @@ int main(){
     form = intern.makeForm("ro", "Christoph");
     form2 = intern.makeForm("presidential pardon", "Marc");
     form3 = intern.makeForm("", "Christoph");
-    Bureaucrat	bouffon("bouffon", 3);
-    form->beSigned(&bouffon);
-    if (form)
+    Bureaucrat	bouffon("bouffon", 140);
+    if (form) {
+        form->beSigned(&bouffon);
         form->execute(bouffon);
+        delete &form;
+    }
+    if(form2){
+        form2->beSigned(&bouffon);
+        form2->execute(bouffon);
+        form2->beSigned(&bouffon);
+        std::cout << "** Changing grade **" << std::endl;
+        bouffon.setGrade(20);
+        form2->beSigned(&bouffon);
+        form2->execute(bouffon);
+        delete &form2;
+    }
+    if (form3){
+        form3->beSigned(&bouffon);
+        form3->execute(bouffon);
+        delete &form3;
+    }
     return 0;
 }
