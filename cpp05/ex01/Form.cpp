@@ -42,10 +42,10 @@ int     Form::getExecGrade() const{
 void Form::beSigned(Bureaucrat const &bureaucrat) {
     try {
         if (this->_signed == true) {
-            std::cout << "\033[1;31m"<< getName();
+            std::cout << "\033[1;31m" << getName() << "\033[0m";
             throw Form::FormAlreadySigned();
         } else if (bureaucrat.getGrade() >= this->getSignGrade()) {
-            std::cout << bureaucrat.getName() << " couldn't sign " << _name << " form, because ";
+            std::cout << "\033[1;31m" << bureaucrat.getName() << " couldn't sign " << _name << " form, because \033[0m";
             throw Form::GradeTooLowException();
         }
     }
@@ -69,7 +69,7 @@ std::ostream    &operator<<(std::ostream &out, const Form &tmp){
     if (tmp.getSigned() == true)
         out << "\033[1;32m" <<tmp.getName() << " form status: signed\033[0m";
     else
-        out << tmp.getName() << " form status: not signed; it needs a Bureaucrat at level " << tmp.getSignGrade() << " to be signed";
+        out << tmp.getName() << ": form status: not signed; it needs a Bureaucrat at level " << tmp.getSignGrade() << " to be signed";
     return out;
 }
 

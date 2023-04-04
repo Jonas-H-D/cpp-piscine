@@ -37,7 +37,7 @@ public:
     class GradeTooLowException : public std::exception {
     public:
         virtual const char *what() const throw(){
-            return ("Grade is too LOW for this Form");
+            return ("\033[1;31mGrade is too LOW for this Form\033[0m");
         }
     };
     class FormAlreadySigned : public std::exception {

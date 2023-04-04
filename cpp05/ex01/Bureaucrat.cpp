@@ -36,7 +36,7 @@ int Bureaucrat::setGrade(int grade){
             throw Bureaucrat::GradeTooLowException();
     }
     catch(const std:: exception& e){
-        std::cerr << e.what() << std::endl;
+        std::cerr << "\033[1;31m" <<this->getName()<< ": " << e.what()<< "\033[0m" << std::endl;
         return 0;
     }
     _grade = grade;

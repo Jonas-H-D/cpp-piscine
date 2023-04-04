@@ -40,16 +40,18 @@ int     AForm::getExecGrade() const{
 }
 
 void	AForm::checkBeforeExecute(Bureaucrat const & executor) const {
-    if (!this->getSigned())
-        throw AForm::UnsignedFormException();
-    else if (executor.getGrade() > this->getExecGrade())
-        throw AForm::GradeTooLowException();
+        if (!this->getSigned()) {
+            std::cout << this->getName() << ": ";
+            throw AForm::UnsignedFormException();
+        }
+        else if (executor.getGrade() > this->getExecGrade())
+            throw AForm::GradeTooLowException();
 }
 
 void    AForm::beSigned(Bureaucrat *executor) {
     try
     {
-        if (executor != nullptr && executor->getGrade() <= this->getSignGrade()){
+        if (this != nullptr && executor->getGrade() <= this->getSignGrade()){
             _signed = true;
             std::cout << executor->getName() << " signed " << this->getName() << std::endl;
         }

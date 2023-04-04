@@ -36,12 +36,12 @@ AForm	*Intern::makeForm(std::string form, std::string target) {
                 tmp = (this->*_f[i])(target);
                 return tmp;
             } else {
-                std::cout << "Error: function pointer is null" << std::endl;
+                std::cout << "\033[1;31mError: function pointer is null\033[0m" << std::endl;
                 return nullptr;
             }
         }
     }
-    std::cout << "Error: form not found" << std::endl;
+    std::cout << "\033[1;31mError: form '"<< form << "' not found\033[0m" << std::endl;
     return nullptr;
 }
 
