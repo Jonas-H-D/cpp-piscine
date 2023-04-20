@@ -7,18 +7,22 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 class Scalar
 {
+private:
+    const std::string&	_string;
+    char				_charVal;
+    int					_intVal;
+    float				_floatVal;
+    double				_doubleVal;
+    enum scalarType {charType, intType, floatType, doubleType} _type;
+
 public:
-    // Constructors
     Scalar(const std::string& string);
     Scalar(const Scalar& other);
-
-    // Assignment operator overload
     Scalar& operator=(const Scalar& rhs);
-
-    // Destructor
     ~Scalar();
 
     char toChar() const;
@@ -26,7 +30,7 @@ public:
     float toFloat() const;
     double toDouble() const;
 
-    class InvalidInput : public std::exception
+    class InputException : public std::exception
     {
     public:
         const char* what() const throw()
@@ -52,15 +56,6 @@ public:
             return ("Non displayable");
         }
     };
-
-private:
-
-    const std::string&	_string;
-    char				_charVal;
-    int					_intVal;
-    float				_floatVal;
-    double				_doubleVal;
-    enum scalarType {charType, intType, floatType, doubleType} _type;
 };
 
 std::ostream& operator<<(std::ostream& o, const Scalar& rhs);

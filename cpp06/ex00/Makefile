@@ -1,6 +1,6 @@
-NAME = scalaire
-#CC = g++
-CC = clang++
+NAME = convert
+CC = g++
+##CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 

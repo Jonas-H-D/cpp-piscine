@@ -2,14 +2,12 @@
 // Created by Jonas Hermon-duc on 4/15/23.
 //
 #include "Scalaire.hpp"
-#include <cmath>
-#include <iomanip>
 
 Scalar::Scalar(const std::string& string)
         : _string(string)
 {
     if (string.empty())
-        throw Scalar::InvalidInput();
+        throw Scalar::InputException();
     else if (string.size() == 1)
     {
         if (isdigit(string[0]))
@@ -25,36 +23,36 @@ Scalar::Scalar(const std::string& string)
     }
     else
     {
-        char *longRest;
-        long longPart = strtol(string.c_str(), &longRest, 10);
-        char *doubleRest;
-        double doublePart = strtof(string.c_str(), &doubleRest);
+        char *longChar;
+        long longConvert = strtol(string.c_str(), &longChar, 10);
+        char *doubleChar;
+        double doubleConvert = strtof(string.c_str(), &doubleChar);
 
-        if (*longRest)
+        if (*longChar)
         {
-            if (*doubleRest)
+            if (*doubleChar)
             {
-                if (*doubleRest == 'f')
+                if (*doubleChar == 'f')
                 {
-                    this->_floatVal = static_cast<float>(doublePart);
+                    this->_floatVal = static_cast<float>(doubleConvert);
                     this->_type = floatType;
                 }
                 else
-                    throw Scalar::InvalidInput();
+                    throw Scalar::InputException();
             }
             else
             {
-                this->_doubleVal = doublePart;
+                this->_doubleVal = doubleConvert;
                 this->_type = doubleType;
             }
         }
         else
         {
-            if (longPart > std::numeric_limits<int>::max() || longPart < std::numeric_limits<int>::min())
-                throw Scalar::InvalidInput();
+            if (longConvert > std::numeric_limits<int>::max() || longConvert < std::numeric_limits<int>::min())
+                throw Scalar::InputException();
             else
             {
-                this->_intVal = static_cast<int>(longPart);
+                this->_intVal = static_cast<int>(longConvert);
                 this->_type = intType;
             }
         }
@@ -160,57 +158,57 @@ double Scalar::toDouble() const
     }
 }
 
-std::ostream& operator<<(std::ostream& o, const Scalar& rhs)
+std::ostream& operator<<(std::ostream& out, const Scalar& rhs)
 {
-    o << "char: ";
+    out << "char: ";
     try
     {
         char c;
         c = rhs.toChar();
-        o << "'" << c << "'" << std::endl;
+        out << "'" << c << "'" << std::endl;
     }
     catch(const std::exception& e)
     {
-        o << e.what() << std::endl;
+        out << e.what() << std::endl;
     }
-    o << "int: ";
+    out << "int: ";
     try
     {
         int i;
         i = rhs.toInt();
-        o << i << std::endl;
+        out << i << std::endl;
     }
     catch(const std::exception& e)
     {
-        o << e.what() << std::endl;
+        out << e.what() << std::endl;
     }
-    o << "float: ";
+    out << "float: ";
     try
     {
         float f;
         f = rhs.toFloat();
         double intPart;
         if (modf(f, &intPart) == 0)
-            o.precision(1);
-        o << std::fixed << f << "f" << std::endl;
+            out.precision(1);
+        out << std::fixed << f << "f" << std::endl;
     }
     catch(const std::exception& e)
     {
-        o << e.what() << std::endl;
+        out << e.what() << std::endl;
     }
-    o << "double: ";
+    out << "double: ";
     try
     {
         double d;
         d = rhs.toDouble();
         double intPart;
         if (modf(d, &intPart) == 0)
-            o.precision(1);
-        o << std::fixed << d << std::endl;
+            out.precision(1);
+        out << std::fixed << d << std::endl;
     }
     catch(const std::exception& e)
     {
-        o << e.what() << std::endl;
+        out << e.what() << std::endl;
     }
-    return o;
+    return out;
 }
