@@ -1,4 +1,4 @@
-NAME = convert
+NAME = base
 CC = g++
 ##CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

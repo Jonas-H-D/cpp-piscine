@@ -49,19 +49,20 @@ void identify(Base& p) {
     }
     else if (C* c = dynamic_cast<C*>(&p)) {
         std::cout << "class type: C" << std::endl;
+    } else {
+        std::cout << "Unknown type" << std::endl;
     }
 }
 
 int	main() {
     srand(time(NULL));
-    //generating random drived class
+    std::cout << "Generating random class" << std::endl;
     Base*	pointer_a = generate();
-    //and one more
     Base*	pointer_b = generate();
-    //checking their types by pointer
+    std::cout << "checking types by pointer" << std::endl;
     identify(pointer_a);
     identify(pointer_b);
-    //checking their types by reference
+    std::cout << "checking types by ref" << std::endl;
     identify(*pointer_a);
     identify(*pointer_b);
     return 0;
