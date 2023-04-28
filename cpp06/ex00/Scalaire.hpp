@@ -17,11 +17,10 @@ private:
     int					_intVal;
     float				_floatVal;
     double				_doubleVal;
-    enum scalarType {charType, intType, floatType, doubleType} _type;
+    enum {charType, intType, floatType, doubleType} _type;
 
 public:
     Scalar(const std::string& string);
-    Scalar(const Scalar& other);
     Scalar& operator=(const Scalar& rhs);
     ~Scalar();
 

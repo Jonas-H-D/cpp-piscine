@@ -12,7 +12,7 @@ Scalar::Scalar(const std::string& string)
     {
         if (isdigit(string[0]))
         {
-            this->_intVal = static_cast<int>(strtol(string.c_str(), NULL, 10));
+            this->_intVal = static_cast<int>(atoi(string.c_str()));
             this->_type = intType;
         }
         else
@@ -27,7 +27,6 @@ Scalar::Scalar(const std::string& string)
         long longConvert = strtol(string.c_str(), &longChar, 10);
         char *doubleChar;
         double doubleConvert = strtof(string.c_str(), &doubleChar);
-
         if (*longChar)
         {
             if (*doubleChar)

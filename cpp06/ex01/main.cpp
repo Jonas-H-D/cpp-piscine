@@ -17,13 +17,15 @@ Data* deserialize(uintptr_t raw) {
 }
 
 int main(){
-    Data data;
+
     Data *data_test = new Data;
 
     data_test->city = "Paris";
     data_test->population = 9000000;
 
     //data_test pointer de type Data serialized into uintptr_t then back into Data type
+    std::cout << "City: " << data_test->city << std::endl;
+    std::cout << "City: " << serialize( data_test ) << std::endl;
     std::cout << "City: " << deserialize( serialize( data_test ) )->city << std::endl;
     std::cout << "Population: " << deserialize( serialize( data_test ) )->population << std::endl;
     //checking permanence of the change
