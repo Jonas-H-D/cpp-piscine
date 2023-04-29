@@ -1,18 +1,44 @@
 //
-// Created by Jonas Hermon-Duc on 27/04/2023.
+// Created by Jonas Hermon-duc on 4/29/23.
 //
 
-#ifndef CPPPROJECTS_ARRAY_HPP
-#define CPPPROJECTS_ARRAY_HPP
+#ifndef CPP_PISCINE_ARRAY_HPP
+#define CPP_PISCINE_ARRAY_HPP
+# include <string>
+# include <exception>
 
-template<typename T>
-class Array {
+template <typename T>
+class Array
+{
 public:
-    Array(){};
-    Array(){};
+    // Constructors
+    Array() : _data(new T[0]), _size(0){};
+    Array(unsigned int n) : _data(new T[n]), _size(n){};
+    Array(const Array<T>& other): _data(new T[other._size]), _size(other._size){
+        for(int i = 0; i < (int)_size; i++){
+            this->_data[i] = other._data[i];
+        }
+    }
 
-    ~Array(){};
+    // Destructor
+    ~Array() {delete[] _data; }
+
+    // Assignment operator
+    Array<T>& operator=(const Array<T>& other);
+
+    // Subscript operator
+    T& operator[](unsigned int index);
+
+    // Size function
+    unsigned int size() const;
+
+    // Printing functions
+    void printArray() const;
+    template <typename U>
+    void printTypeArray() const;
+
+private:
+    T* _data;
+    unsigned int _size;
 };
-
-
-#endif //CPPPROJECTS_ARRAY_HPP
+#endif //CPP_PISCINE_ARRAY_HPP

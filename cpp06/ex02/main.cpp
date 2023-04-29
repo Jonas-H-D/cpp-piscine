@@ -40,18 +40,20 @@ void identify(Base* p) {
     }
 }
 
-void identify(Base& p) {
-    if (A* a = dynamic_cast<A*>(&p)) {
+void	identify(Base& p) {
+    Base base;
+    try {
+        base = dynamic_cast<A&>(p);
         std::cout << "class type: A" << std::endl;
-    }
-    else if (B* b = dynamic_cast<B*>(&p)) {
+    } catch(const std::exception& e) {}
+    try {
+        B & b = dynamic_cast<B&>(base);
         std::cout << "class type: B" << std::endl;
-    }
-    else if (C* c = dynamic_cast<C*>(&p)) {
+    } catch(const std::exception& e) {}
+    try {
+        base = dynamic_cast<C&>(p);
         std::cout << "class type: C" << std::endl;
-    } else {
-        std::cout << "Unknown type" << std::endl;
-    }
+    } catch(const std::exception& e) {}
 }
 
 int	main() {

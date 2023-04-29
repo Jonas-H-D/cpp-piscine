@@ -8,7 +8,7 @@
 #include "iostream"
 
 template<typename T, typename V>
-void   iter(T arr[], size_t u, V z){
+void   iter(T arr[], std::size_t u, V z){
     for (int i = 0; i < u; i++){
         z(arr[i]);
     }

@@ -12,6 +12,9 @@
     <mapping directory="$PROJECT_DIR$/cpp04-clone/check-04" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cpp05/evalGaetan" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cpp05/intra-uuid-66d56c3f-5f83-4194-9782-8107c35ff9de-4778057-jhermon-" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cpp06/her" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/intra-uuid-66cda5cf-5ab8-4baf-9513-402f9c8d5ac4-4622409-jhermon-" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/rendu-cpp06" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/rendu-cpp06/intra-uuid-98822b03-4069-4035-8b64-8cacd213eb09-4794437-jhermon-" vcs="Git" />
   </component>
 </project>
