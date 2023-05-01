@@ -13,12 +13,10 @@ seule condition que ces derniers aient le même type et supportent les opérateu
 //Intervertit les valeurs de deux arguments donnés. Ne retourne rien.
 template<typename T>
 void swap(T &x, T &y){
-    T tempX;
-    T tempY;
-    tempX = x;
-    tempY = y;
-    x = tempY;
-    y = tempX;
+    T temp;
+    temp= x;
+    x = y;
+    y = temp;
 };
 // Compare les deux valeurs passées en argument et retourne la plus petite des
 //deux. Si les deux sont équivalentes, alors retourne la seconde.

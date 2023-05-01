@@ -14,12 +14,16 @@ public:
     // Constructors
     Array() : _data(new T[0]), _size(0){}
     Array(unsigned int n) : _data(new T[n]), _size(n) {
-        for (unsigned int i = 0; i < n; i++) {
-            _data[i] = 0;
+        if (n > 0){
+            for (unsigned int i = 0; i < n; i++) {
+                _data[i] = T();
+            }
+        } else {
+            std::cerr << "Error: size must be bigger than 0" << std::endl;
         }
     }
     Array(const Array<T>& other): _data(new T[other._size]), _size(other._size){
-        for(int i = 0; i < (int)_size; i++){
+        for(int i = 0; i < _size; i++){
             this->_data[i] = other._data[i];
         }
     }
@@ -65,14 +69,15 @@ private:
 
 template < typename T >
 void printObjectFunction(Array<T> &tab, unsigned int size){
-    std::cout << "Array Printing" << std::endl;
+    std::cout << "Array Object Printing" << std::endl;
     for(int i=0; i < size; i++){
         std::cout << tab[i] << " ";
     }
 }
 
-template < typename T > void printTypeFunction(T& tab, unsigned int size)
-{
+template < typename T >
+void printTypeFunction(T& tab, unsigned int size){
+    std::cout << "Array Printing" << std::endl;
     for (unsigned int i = 0; i < size; i++)
         std::cout << tab[i] << " ";
 }
