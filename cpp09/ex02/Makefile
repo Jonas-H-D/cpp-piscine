@@ -6,11 +6,11 @@ RM = rm -rf
 
 OBJDIR = .objfiles
 
-FILES = main
+FILES = main PmergeMe
 
 SRC = $(FILES:=.cpp)
 OBJ = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER =
+HEADER = PmergeMe.hpp
 
 #Colors:
 GREEN		=	\e[92;5;118m

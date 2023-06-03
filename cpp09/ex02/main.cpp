@@ -1,40 +1,22 @@
-
-#include <iostream>
-#include <string>
-#include <deque>
-#include <vector>
-#include <algorithm>
-#include <ctime>
+#include "PmergeMe.hpp"
 
 int main(int argc, char **argv){
-    int i = 1;
-    std::deque<int> myDeque;
-    std::vector<int> myVector;
 
-    int value;
-    while (i != argc) {
-        value = std::atoi(argv[i]);
-        myDeque.push_back(value);
-        myVector.push_back(value);
-        std::cout << *argv[i] << std::endl;
-        i++;
+    if (argc < 2){
+        std::cout << "ERROR - Program works as follow: ./merge + int positive values to sort+" << std::endl;
+        return 0;
     }
-    std::deque<int>::iterator   it;
-    for (it = myDeque.begin(); it != myDeque.end(); ++it){
-        std::cout << *it << ' ';
-    }
-    std::cout << std::endl;
+    std::cout << "First Instance" << std::endl;
+    PmergeMe merge(argc,argv);
 
-    std::vector<int>::iterator  y;
-    std::clock_t start = std::clock();
-    std::sort(myVector.begin(), myVector.end());
-    std::clock_t end = std::clock();
-    double duration = (end - start) / (double)CLOCKS_PER_SEC;
-    for (y = myVector.begin(); y != myVector.end(); ++y){
-        std::cout << *y << ' ';
-    }
-    std::cout << std::endl;
-    std::cout << "time sort processing = " << duration << std::endl;
+    std::cout << "Second Instance" << std::endl;
+    PmergeMe  hello(argc, argv);
+
+    std::cout << "Operator = Surcharge" << std::endl;
+    hello = merge;
+    hello.sortAndPrint();
+    std::cout << "Other object as Argument" << std::endl;
+    PmergeMe test(merge);
 
     return 0;
 }
