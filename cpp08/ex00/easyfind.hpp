@@ -22,13 +22,20 @@ List
 #include <list>
 #include <deque>
 #include <map>
-#include <stdexcept>
+#include <exception>
+
+class ElementNotFoundException : public std::exception {
+public:
+    const char* what() const throw() {
+        return "Element not found in container";
+    }
+};
 
 template<typename T>
 typename T::iterator containerFind(T& container, int y){
     typename T::iterator it = std::find(container.begin(), container.end(), y);
     if (it == container.end())
-        throw std::runtime_error("Element not found in container");
+        throw ElementNotFoundException();
     return it;
 }
 
@@ -38,8 +45,8 @@ void easyfind(T& container, int y){
         typename T::iterator it = containerFind(container, y);
         std::cout << "First occurrence of the Value is in Index position " << std::distance(container.begin(), it) << std::endl;
     }
-    catch(const std::runtime_error& e){
-        std::cerr << "Error: " << e.what() << std::endl;
+    catch(const std::exception& e){
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
 
