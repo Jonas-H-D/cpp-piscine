@@ -6,10 +6,8 @@ int main(int argc, char **argv){
         std::cout << "ERROR - Program works as follow: ./merge + int positive values to sort+" << std::endl;
         return 0;
     }
-    std::cout << "First Instance" << std::endl;
     PmergeMe merge(argc,argv);
 
-    std::cout << "Second Instance" << std::endl;
     PmergeMe  hello(argc, argv);
 
     std::cout << "Operator = Surcharge" << std::endl;

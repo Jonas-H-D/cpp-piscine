@@ -27,6 +27,7 @@ public:
     bool is_digit(const std::string str);
     void sortAndPrint();
     void mergePrint(std::string str);
+    int size;
 };
 
 template <typename T>
