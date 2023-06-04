@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
 
     std::cout.precision(7);
     if (argc != 2) {
-        return (error_out("Error: Program needs a valid data file as argument"));
+        return (error_out("Error: could not open file."));
     }
     argument.open(argv[1], std::ifstream::in);
     bit_data.open("./data.csv", std::ifstream::in);
@@ -20,7 +20,6 @@ int main(int argc, char **argv) {
         return(error_out("Error: file given as argument can't be opened"));
     if (!bit_data)
         return(error_out("Error: data base can't be opened"));
-    std::getline(bit_data, line);
     while (std::getline(bit_data, line))
         bit_map[line.substr(0, 10)] = atof(line.substr(11).c_str());
 

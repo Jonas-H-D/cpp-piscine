@@ -49,12 +49,12 @@ int BitcoinExchange::data_validation(const std::string &date_line) {
 int BitcoinExchange::line_validation(const std::string line){
     _date = line.substr(0, 10);
     if (line.length() < 14 || line[4] != '-' || line[7] != '-' || !data_validation(_date))
-        return (error("Error: invalid format: " + line));
+        return (error("Error: bad input: " + line));
     _value = std::atof(line.substr(13).c_str());
     if (!_value || _value < 0)
-        return (error("Error: invalid value, must be positive int"));
+        return (error("Error: not a positive number."));
     if(_value > 1000)
-        return (error("Error: invalid value, can't be higher than 1000"));
+        return (error("Error: too large a number."));
     return 1;
 }
 
