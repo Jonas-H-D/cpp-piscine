@@ -3,7 +3,7 @@
 int main(int argc, char **argv){
 
     if (argc < 2){
-        std::cout << "ERROR - Program works as follow: ./merge + int positive values to sort+" << std::endl;
+        std::cout << "ERROR - Program works as follow: ./PmergeMe + int positive values to sort" << std::endl;
         return 0;
     }
     PmergeMe merge(argc,argv);

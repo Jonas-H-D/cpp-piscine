@@ -2,8 +2,8 @@
 // Created by Jonas Hermon-Duc on 25/05/2023.
 //
 
-#ifndef CPPPROJECTS_PMERGEME_HPP
-#define CPPPROJECTS_PMERGEME_HPP
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
 
 #include <iostream>
 #include <string>
@@ -12,21 +12,21 @@
 #include <algorithm>
 #include <ctime>
 
-#define PRINTABLE 10
+#define K 10
 
 class PmergeMe {
 private:
     std::deque<int> _myDeque;
     std::vector<int> _myVector;
 public:
-    PmergeMe(int argc, char **stack);
+    PmergeMe(int argc, char **input);
     PmergeMe(const PmergeMe & rhs);
     ~PmergeMe();
     PmergeMe &operator=(const PmergeMe &other);
 
     bool is_digit(const std::string str);
     void sortAndPrint();
-    void mergePrint(std::string str);
+    void listPrint(std::string str);
     int size;
 };
 
@@ -47,7 +47,7 @@ void    insertion_sort(T &container){
 
 template <typename T>
 void merge_sort(T &container){
-    if (container.size() <= PRINTABLE){
+    if (container.size() <= K){
         insertion_sort(container);
         return ;
     }
@@ -58,4 +58,4 @@ void merge_sort(T &container){
     merge_sort(right);
     std::merge(left.begin(), left.end(), right.begin(), right.end(), container.begin());
 }
-#endif //CPPPROJECTS_PMERGEME_HPP
+#endif

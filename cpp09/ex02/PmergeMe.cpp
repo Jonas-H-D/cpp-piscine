@@ -4,19 +4,19 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(int argc, char **stack){
+PmergeMe::PmergeMe(int argc, char **input){
     int value;
     int i = 1;
 
-    while (stack[i] && is_digit(stack[i])) {
-        value = std::atoi(stack[i]);
+    while (input[i] && is_digit(input[i])) {
+        value = std::atoi(input[i]);
         _myDeque.push_back(value);
         _myVector.push_back(value);
-        std::cout << value << ' ';
+        //std::cout << value << ' ';
         i++;
     }
     size = i - 1;
-    std::cout << std::endl;
+    //std::cout << std::endl;
     sortAndPrint();
 }
 
@@ -56,7 +56,7 @@ bool PmergeMe::is_digit(const std::string str) {
     return true;
 }
 
-void PmergeMe::mergePrint(std::string str) {
+void PmergeMe::listPrint(std::string str) {
     std::deque<int>::iterator it = _myDeque.begin();
     std::cout << str << ": ";
     while (it != _myDeque.end() && std::distance(_myDeque.begin(), it) < 4) {
@@ -70,22 +70,28 @@ void PmergeMe::mergePrint(std::string str) {
 }
 
 void PmergeMe::sortAndPrint() {
-    mergePrint("Before sort");
+    listPrint("Before sort");
+
     std::clock_t start = std::clock();
     merge_sort(_myDeque);
     _myDeque.assign(_myDeque.begin(), std::unique(_myDeque.begin(), _myDeque.end()));
     std::clock_t end = std::clock();
     double temps = double(end - start) / CLOCKS_PER_SEC;
-    mergePrint("After sort");
+
+    listPrint("After sort");
+
     std::cout << "Time to process a range of " << size <<" elements with std::deque : " << temps * 1000000<< "ms."<< std::endl;
 
-    start = std::clock();
+    std::clock_t debut = std::clock();
     merge_sort(_myVector);
     _myVector.assign(_myVector.begin(), std::unique(_myVector.begin(), _myVector.end()));
-    end = std::clock();
-    double duration = (end - start) / CLOCKS_PER_SEC;
-    std::cout << "Time to process a range of " << size <<" elements with std::vector : " << temps * 1000000<< "ms."<< std::endl;
-    std::cout << "**************** ********* ********** **************" << temps * 1000000<< "ms."<< std::endl;
+    std::clock_t fin = std::clock();
+    double duration = double(fin - debut) / CLOCKS_PER_SEC;
+
+    std::cout << "Time to process a range of " << size <<" elements with std::vector : " << duration * 1000000<< "ms."<< std::endl;
+    std::cout << "**************** ********* ********** **************" << std::endl;
 }
 
-
+/*std::vector stores its elements in a contiguous block of memory, allowing for efficient random access and cache locality.
+This contiguous
+memory layout often leads to better performance for sorting algorithms*/
